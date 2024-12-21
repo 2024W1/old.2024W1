@@ -1,0 +1,76 @@
+<script>
+    // 定义正确答案
+    const answers = {
+        // 第一大题答案
+        q1a: "Haushalt", q1b: "Ausland",
+        q2a: "Staat", q2b: "Unternehmen",
+        q3a: "Haushalt", q3b: "Staat",
+        q4a: "Staat", q4b: "Unternehmen",
+        q5a: "Haushalt", q5b: "Bank",
+        q6a: "Unternehmen", q6b: "Ausland",
+        q7a: "Unternehmen", q7b: "Haushalt",
+        q8a: "Bank", q8b: "Staat",
+        q9a: "Haushalt", q9b: "Ausland",
+        q10a: "Haushalt", q10b: "Staat",
+        q11a: "Unternehmen", q11b: "Haushalt",
+        q12a: "Haushalt", q12b: "Staat",
+        q13a: "Unternehmen", q13b: "Bank",
+        // 第二大题答案
+        q14: "F", q15: "F", q16: "F", q17: "R", q18: "F",
+        q19: "R", q20: "F", q21: "R", q22: "F", q23: "F"
+    };
+    
+    function submitExam() {
+        let score = 0;
+        let totalQuestions = Object.keys(answers).length / 2; // 因为第一大题每题有两个部分
+    
+        // 检查第一大题答案
+        for (let i = 1; i <= 13; i++) {
+            let inputA = document.getElementById(`q${i}a`);
+            let inputB = document.getElementById(`q${i}b`);
+            if (inputA.value.toLowerCase() === answers[`q${i}a`].toLowerCase() &&
+                inputB.value.toLowerCase() === answers[`q${i}b`].toLowerCase()) {
+                score++;
+                inputA.style.backgroundColor = "lightgreen";
+                inputB.style.backgroundColor = "lightgreen";
+                inputA.disabled = true;
+                inputB.disabled = true;
+            } else {
+                inputA.style.backgroundColor = "lightpink";
+                inputB.style.backgroundColor = "lightpink";
+            }
+        }
+    
+        // 检查第二大题答案
+        for (let i = 14; i <= 23; i++) {
+            let select = document.getElementById(`q${i}`);
+            if (select.value === answers[`q${i}`]) {
+                score++;
+                select.style.backgroundColor = "lightgreen";
+                select.disabled = true;
+            } else {
+                select.style.backgroundColor = "lightpink";
+            }
+        }
+    
+        // 显示得分
+        let resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = `Ihre Punktzahl: ${score} von ${totalQuestions}`;
+    }
+    </script>
+    
+    <style>
+    button {
+      padding: 15px 30px; /* 增加按钮的内边距 */
+      font-size: 16px; /* 增加字体大小 */
+      background-color: #4CAF50; /* 按钮背景颜色 */
+      color: white; /* 字体颜色 */
+      border: none; /* 去掉边框 */
+      cursor: pointer; /* 鼠标悬停时显示手型 */
+    }
+    
+    button:hover {
+      background-color: #00ccff; /* 鼠标悬停时的背景颜色 */
+    }
+    </style>
+    

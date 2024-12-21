@@ -1,0 +1,12 @@
+markdown: GFM
+
+highlighter: rouge
+
+mathjax: true
+mathjax_autoNumber: true
+
+plugins:
+  - jekyll-mermaid
+
+mermaid:
+  src: 'https://unpkg.com/mermaid@9.1.0/dist/mermaid.min.js'
